@@ -10,17 +10,25 @@
 
     <header>
         <div class="logo">
-            <span>🐾 MichiDev</span>
+            <span id="logo-michidev" class="caja-rosada">🐾 MichiDev</span>
         </div>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#registro">Registrar Michi</a></li>
+                <li><a href="#inicio" class="nav-animado">Inicio</a></li>
+                <li><a href="#galeria" class="nav-animado">Galería</a></li>
+                <li><a href="#registro" class="nav-animado">Registrar Michi</a></li>
                 <li><button id="btn-dark-mode">🌙 Modo Michi-Dark</button></li>
             </ul>
         </nav>
     </header>
+
+    <div id="modal-gracias" class="modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-modal">&times;</span>
+            <h2>¡Hola! 🐾</h2>
+            <p>Gracias por mirar mi sitio, espero que te haya gustado ❤️</p>
+        </div>
+    </div>
 
     <main class="main-container">
         
@@ -28,7 +36,7 @@
             <h1>Panel de Control de Pelusa</h1>
 
             <div class="seccion-gatito">
-                <div class="marco-marron">
+                <div class="marco-marron animacion-hover">
                     <div class="foto-principal">
                         <img src="imagenes/gatito1.jpg" alt="Pelusa el MichiDev">
                         <p class="etiqueta-cute">Mascota Senior del Proyecto</p>
@@ -106,11 +114,13 @@
         <section id="registro">
             <h2>Registra a tu Michi Programador</h2>
             <form id="form-michi">
-                <input type="text" id="nombre-michi" placeholder="Nombre del gato" required>
-                <input type="text" id="especialidad-michi" placeholder="Especialidad (ej: Debugging)" required>
-                <label for="foto-michi" class="label-file">Sube la foto de tu michi 📸</label>
-                <input type="file" id="foto-michi" accept="image/*" required>
-                <button type="submit">Enviar al Sistema 🚀</button>
+                <div class="form-container">
+                    <input type="text" id="nombre-michi" placeholder="Nombre del gato" required>
+                    <input type="text" id="especialidad-michi" placeholder="Especialidad (ej: Debugging)" required>
+                    <label for="foto-michi" class="label-file">Sube la foto de tu michi 📸</label>
+                    <input type="file" id="foto-michi" accept="image/*" required>
+                    <button type="submit" class="btn-interact">Enviar al Sistema 🚀</button>
+                </div>
             </form>
         </section>
 
