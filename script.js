@@ -9,58 +9,53 @@ bgMusic.loop = true;   // Reproducción en bucle
 let musicaIniciada = false;
 
 // ==========================================
-// 1. Contador de Mimos y Efectos
+// 1. Contador de Mimos y Efectos Originales
 // ==========================================
 let mimos = 0;
 const btnMimo = document.getElementById('btn-mimo');
 const displayMimos = document.getElementById('contador-mimos');
 
 btnMimo.addEventListener('click', (e) => {
-    // Iniciar la música de fondo al primer clic (para evitar bloqueos del navegador)
+    // Iniciar la música de fondo al primer clic
     if (!musicaIniciada) {
-        bgMusic.play().catch(err => console.log("El navegador bloqueó el autoplay.", err));
+        bgMusic.play().catch(err => console.log("Autoplay bloqueado.", err));
         musicaIniciada = true;
     }
 
-    // Reproducir maullido por 1 segundo exacto sin superponer
-    meowSound.currentTime = 0; // Reinicia el audio a cero
+    meowSound.currentTime = 0; 
     meowSound.play();
     setTimeout(() => {
         meowSound.pause();
         meowSound.currentTime = 0;
-    }, 1000); // Lo corta justo al segundo
+    }, 1000); 
 
-    // Lógica del contador
     mimos++;
     displayMimos.textContent = mimos;
     btnMimo.textContent = "🥰 ¡Gracias!";
     setTimeout(() => btnMimo.textContent = "💖 Dar Caricia", 1000);
 
-    // Efecto de las letritas flotantes "miau"
     crearMiauFlotante(e.pageX, e.pageY);
 });
 
-// Función para generar las letras de "miau" que vuelan
 function crearMiauFlotante(x, y) {
     const miau = document.createElement('span');
     miau.textContent = 'miau miau miau';
-    miau.classList.add('miau-flotante');
+    miau.classList.add('miau-flotante'); // Asegúrate de tener esta clase en CSS si quieres estilizarla
     
-    // Posición basada en donde hizo clic el mouse, con un poco de aleatoriedad
     const offsetX = (Math.random() - 0.5) * 50;
+    miau.style.position = 'absolute';
     miau.style.left = `${x + offsetX}px`;
     miau.style.top = `${y - 20}px`;
+    miau.style.color = '#ff6b77';
+    miau.style.fontWeight = 'bold';
+    miau.style.zIndex = '9999';
 
     document.body.appendChild(miau);
-
-    // Eliminar el elemento del HTML después de 1 segundo (lo que dura la animación)
-    setTimeout(() => {
-        miau.remove();
-    }, 1000); 
+    setTimeout(() => miau.remove(), 1000); 
 }
 
 // ==========================================
-// 2. Generador de Curiosidades (AMPLIADO)
+// 2. Generador de Curiosidades
 // ==========================================
 const curiosidades = [
     "Los gatos tienen 32 músculos en cada oreja.",
@@ -68,12 +63,7 @@ const curiosidades = [
     "El cerebro de un gato es 90% similar al de un humano.",
     "Los gatos no pueden saborear lo dulce.",
     "Pelusa ha roto 42 líneas de código esta mañana.",
-    "El ronroneo de los gatos tiene propiedades curativas para los huesos humanos.",
-    "Los gatos pasan el 70% de sus vidas durmiendo.",
-    "La nariz de un gato es única, como una huella dactilar humana.",
-    "A diferencia de los perros, los gatos sudan por sus patas.",
-    "Isaac Newton inventó la primera gatera (puerta para gatos).",
-    "Los gatos tienen cinco dedos en las patas delanteras y cuatro en las traseras."
+    "El ronroneo de los gatos tiene propiedades curativas para los huesos humanos."
 ];
 
 const btnFact = document.getElementById('btn-fact');
@@ -89,46 +79,49 @@ btnFact.addEventListener('click', () => {
 });
 
 // ==========================================
-// 3. Modo Oscuro
+// 3. Modo Oscuro (ARREGLADO PARA ACTIVAR VARIABLES CSS)
 // ==========================================
 const btnDark = document.getElementById('btn-dark-mode');
 btnDark.addEventListener('click', () => {
+    // Al añadir 'dark-mode' al body, el CSS cambia las variables :root
     document.body.classList.toggle('dark-mode');
     btnDark.textContent = document.body.classList.contains('dark-mode') ? "☀️ Modo Claro" : "🌙 Modo Michi-Dark";
 });
 
 // ==========================================
-// 4. Formulario y LocalStorage (Persistencia)
+// 4. Formulario y LocalStorage (Intacto)
 // ==========================================
 const formMichi = document.getElementById('form-michi');
 const contenedorGaleria = document.getElementById('contenedor-galeria');
 const fileInput = document.getElementById('foto-michi');
 
-// Función para cargar los michis guardados al iniciar la página
 function cargarMichisGuardados() {
     const michis = JSON.parse(localStorage.getItem('michisNuevos')) || [];
     michis.forEach(michi => agregarMichiAlDOM(michi.nombre, michi.especialidad, michi.imagenBase64));
 }
 
-// Función para dibujar un gato nuevo en la galería HTML
 function agregarMichiAlDOM(nombre, especialidad, imagenSrc) {
     const nuevaCard = document.createElement('div');
     nuevaCard.classList.add('foto-card');
     
     nuevaCard.innerHTML = `
-        <img src="${imagenSrc}" alt="${nombre}">
+        <img src="${imagenSrc}" alt="${nombre}" style="transition: transform 0.4s ease;">
         <div class="card-info">
             <h4>${nombre}</h4>
             <p>Rol: ${especialidad}</p>
         </div>
     `;
+    
+    // Le agregamos el evento de hover por javascript también como extra seguridad
+    const img = nuevaCard.querySelector('img');
+    img.addEventListener('mouseenter', () => img.style.transform = 'scale(1.08) rotate(2deg)');
+    img.addEventListener('mouseleave', () => img.style.transform = 'scale(1) rotate(0deg)');
+
     contenedorGaleria.appendChild(nuevaCard);
 }
 
-// Evento al enviar el formulario
 formMichi.addEventListener('submit', (e) => {
     e.preventDefault();
-    
     const nombre = document.getElementById('nombre-michi').value;
     const especialidad = document.getElementById('especialidad-michi').value;
     const archivoFoto = fileInput.files[0];
@@ -137,7 +130,6 @@ formMichi.addEventListener('submit', (e) => {
         const reader = new FileReader();
         reader.onload = function(evento) {
             const imagenBase64 = evento.target.result;
-            
             agregarMichiAlDOM(nombre, especialidad, imagenBase64);
             
             const michisGuardados = JSON.parse(localStorage.getItem('michisNuevos')) || [];
@@ -145,13 +137,65 @@ formMichi.addEventListener('submit', (e) => {
             localStorage.setItem('michisNuevos', JSON.stringify(michisGuardados));
 
             formMichi.reset();
-            alert("¡Michi registrado y guardado exitosamente! 🐈💻");
+            alert("¡Michi registrado! 🐈💻");
         };
         reader.readAsDataURL(archivoFoto); 
-    } else {
-        alert("Por favor, sube una foto válida.");
     }
 });
 
-// Cargar al inicio
+// ==========================================
+// 5. NUEVO: BRILLITOS AL DESLIZAR EL DEDO/MOUSE
+// ==========================================
+// Escucha tanto el movimiento del mouse (PC) como el dedo (Celular)
+document.addEventListener('mousemove', crearBrillito);
+document.addEventListener('touchmove', (e) => {
+    // Tomamos la coordenada del primer dedo tocando la pantalla
+    const touch = e.touches[0];
+    crearBrillito({ pageX: touch.pageX, pageY: touch.pageY });
+});
+
+function crearBrillito(e) {
+    // Para no saturar el navegador, creamos un brillito solo con cierta probabilidad
+    if (Math.random() > 0.4) return; 
+
+    const brillito = document.createElement('div');
+    brillito.classList.add('brillito');
+    
+    // Posicionamos exactamente donde pasó el cursor/dedo
+    brillito.style.left = `${e.pageX}px`;
+    brillito.style.top = `${e.pageY}px`;
+    
+    document.body.appendChild(brillito);
+
+    // El CSS se encarga de animarlo, aquí solo lo borramos del HTML al terminar
+    setTimeout(() => {
+        brillito.remove();
+    }, 600);
+}
+
+// ==========================================
+// 6. NUEVO: VENTANA EMERGENTE DEL LOGO
+// ==========================================
+const logoMichiDev = document.getElementById('logo-michidev');
+const modalGracias = document.getElementById('modal-gracias');
+const btnCerrarModal = document.getElementById('cerrar-modal');
+
+// Abrir el modal
+logoMichiDev.addEventListener('click', () => {
+    modalGracias.style.display = 'block';
+});
+
+// Cerrar con la X
+btnCerrarModal.addEventListener('click', () => {
+    modalGracias.style.display = 'none';
+});
+
+// Cerrar si hace clic afuera del recuadro
+window.addEventListener('click', (e) => {
+    if (e.target === modalGracias) {
+        modalGracias.style.display = 'none';
+    }
+});
+
+// Cargar estado inicial
 window.onload = cargarMichisGuardados;
