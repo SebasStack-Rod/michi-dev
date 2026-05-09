@@ -1,228 +1,328 @@
 /* ==========================================
-   OPTIMIZACIÓN PARA MÓVILES (Responsive Avanzado)
+   VARIABLES GLOBALES (Colores y Temas)
    ========================================== */
-
-@media (max-width: 768px) {
-    /* Ajustes del contenedor principal y fondo */
-    .main-container {
-        margin: 5px auto;
-        padding: 20px 15px;
-        width: 95%;
-        box-sizing: border-box;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        background-color: transparent; 
-    }
-
-    /* Header: Manteniendo la esencia de PC pero estructurado en bloque */
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem 1rem;
-        gap: 15px;
-        border-bottom: 2px solid #ccc;
-    }
-
-    .logo {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    nav {
-        width: 100%;
-    }
-
-    nav ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    nav li {
-        margin-left: 0;
-        width: 45%; /* Distribuido para que parezcan botones de PC ordenados */
-        text-align: center;
-    }
-
-    /* La sección de Pelusa: Detallada para no perder la vista estructural de PC */
-    .seccion-gatito {
-        width: 100%;
-        margin-top: 15px;
-    }
-
-    .marco-marron {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        gap: 25px;
-        border-radius: 15px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-
-    .foto-principal {
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .marco-marron img {
-        width: 200px;
-        max-width: 90%;
-        border-radius: 50%;
-        border: 4px solid #fff;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        transition: transform 0.3s ease;
-    }
-
-    .caja-info {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    .caja-info h3 {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        letter-spacing: 0.5px;
-    }
-
-    .skills {
-        margin: 20px 0;
-        width: 100%;
-    }
-
-    /* Ajuste de botones emulando el tamaño visual de PC pero amigables al tacto */
-    .interaccion {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .btn-interact, #btn-fact, button[type="submit"] {
-        width: 100%;
-        max-width: 320px; /* Evita que en tablets pequeñas se vea deforme */
-        padding: 16px 20px;
-        margin-bottom: 12px;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    /* Galería: Estructura robusta para mantener el grid */
-    #galeria {
-        padding: 20px 10px;
-    }
-
-    .grid-galeria {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 20px;
-        justify-content: center;
-        align-items: stretch;
-    }
-
-    .foto-card {
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        background-color: #fff; /* Asegura contraste si tienes fondo oscuro */
-    }
-
-    .foto-card img {
-        width: 100%;
-        height: 160px;
-        object-fit: cover;
-    }
-
-    .card-info {
-        padding: 12px;
-        text-align: center;
-    }
-
-    /* Formulario: Control de espacios y márgenes precisos */
-    #registro {
-        margin-top: 30px;
-        padding: 20px 10px;
-    }
-
-    #form-michi {
-        padding: 25px 20px;
-        max-width: 100%;
-        box-sizing: border-box;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    #form-michi input {
-        padding: 14px;
-        font-size: 1rem;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Texto flotante: Ajuste de tipografía y z-index */
-    .miau-flotante {
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        z-index: 9999;
-    }
+:root {
+    /* MODO CLARO (Pasteles inspirados en tu imagen) */
+    --bg-body: #fff0f5;       /* Rosa de fondo general */
+    --bg-header: #ffb6c1;     /* Rosa oscuro para el header */
+    --text-color: #5c3a21;    /* Marrón para el texto */
+    --bg-card: #ffe4e1;       /* Rosa clarito para las tarjetas */
+    --bg-box: #ffe4b5;        /* Naranja/crema pastel para curiosidades y form */
+    --border-dashed: #ff99aa; /* Borde punteado rosado */
+    --btn-primary: #ff8c94;   /* Botón principal */
+    --btn-hover: #ff6b77;
+    --box-shadow: rgba(255, 182, 193, 0.5);
 }
 
-/* Ajustes extra para pantallas muy pequeñas (iPhone SE, etc.) */
-@media (max-width: 400px) {
-    header {
-        padding: 1rem 0.5rem;
-    }
+body.dark-mode {
+    /* MODO OSCURO (Mismos tonos pero adaptados a la noche) */
+    --bg-body: #2c1a1d;       /* Fondo oscuro con toque vino */
+    --bg-header: #4a2b30;     /* Header oscuro */
+    --text-color: #fce4ec;    /* Texto rosado muy claro */
+    --bg-card: #3d2328;       /* Tarjetas oscuras */
+    --bg-box: #4a3424;        /* Naranja quemado/oscuro */
+    --border-dashed: #ff8c94; /* Borde punteado vibrante */
+    --btn-primary: #d65a6c;
+    --btn-hover: #ff6b77;
+    --box-shadow: rgba(0, 0, 0, 0.7);
+}
 
-    h1 {
-        font-size: 1.4rem;
-        text-align: center;
-    }
+/* ==========================================
+   ESTILOS GENERALES Y ESTRUCTURA BASE
+   ========================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden; /* Evita scroll horizontal por los brillitos */
+}
 
-    .logo span {
-        font-size: 1.2rem;
-    }
+/* ==========================================
+   HEADER Y LOGO ROSADO ANIMADO
+   ========================================== */
+header {
+    background-color: var(--bg-header);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px var(--box-shadow);
+    transition: background-color 0.4s ease;
+}
 
-    nav li {
-        width: 100%; /* En pantallas mini, forzamos a una sola columna */
-        margin-bottom: 5px;
-    }
-    
-    .grid-galeria {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
+/* El recuadro rosado que pediste para MichiDev */
+.caja-rosada {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
 
-    .marco-marron img {
-        width: 150px;
-    }
-    
-    .btn-interact, #btn-fact, button[type="submit"] {
-        font-size: 1rem;
-        padding: 14px 10px;
-    }
+.caja-rosada:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Animación de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* El movimiento divertido en las letras del menú */
+.nav-animado:hover {
+    color: #fff;
+    transform: translateY(-5px) scale(1.1);
+    text-shadow: 0 4px 5px rgba(0,0,0,0.2);
+}
+
+#btn-dark-mode {
+    background-color: var(--btn-primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#btn-dark-mode:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL Y CAJAS PASTEL
+   ========================================== */
+.main-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #ffffff; /* Fondo blanco de la hoja principal */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px var(--box-shadow);
+    transition: background-color 0.4s ease;
+}
+
+body.dark-mode .main-container {
+    background-color: #2a1a1f; /* Hoja en dark mode */
+}
+
+/* Recuadro punteado estilo imagen de referencia */
+.marco-marron {
+    background-color: var(--bg-card);
+    border: 3px dashed var(--border-dashed);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+/* Animación al pasar el dedo o mouse por las fotos */
+.foto-principal img, .foto-card img {
+    border-radius: 15px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.foto-principal img:hover, .foto-card img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 10px 15px var(--box-shadow);
+    cursor: pointer;
+}
+
+.caja-info {
+    flex: 1;
+}
+
+/* Barras de habilidades */
+.skill-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+body.dark-mode .skill-bar { background-color: #1a0f12; }
+
+.fill {
+    background-color: var(--btn-primary);
+    color: white;
+    padding: 5px;
+    font-size: 0.8rem;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+/* ==========================================
+   CAJAS NARANJA/CREMA (Curiosidades y Form)
+   ========================================== */
+.curiosidades-box, .form-container {
+    background-color: var(--bg-box);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.4s ease;
+}
+
+.btn-interact, #btn-fact {
+    background-color: var(--btn-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-interact:hover, #btn-fact:hover {
+    background-color: var(--btn-hover);
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   GALERÍA GRID
+   ========================================== */
+.grid-galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.foto-card {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.4s ease;
+}
+
+.foto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ==========================================
+   FORMULARIO
+   ========================================== */
+#form-michi input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid var(--border-dashed);
+    border-radius: 10px;
+    font-family: inherit;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.label-file {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 2px dashed var(--btn-primary);
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.label-file:hover { background-color: var(--bg-card); }
+input[type="file"] { display: none; }
+
+/* ==========================================
+   BRILLITOS ROSADOS (Clase generada en JS)
+   ========================================== */
+.brillito {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff99aa;
+    border-radius: 50%;
+    pointer-events: none; /* Para que no moleste al hacer clics */
+    box-shadow: 0 0 8px #ff99aa, 0 0 15px #ffb6c1;
+    animation: desvanecerBrillo 0.6s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes desvanecerBrillo {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0.1) translateY(-20px); opacity: 0; }
+}
+
+/* ==========================================
+   VENTANA EMERGENTE (MODAL)
+   ========================================== */
+.modal-oculto {
+    display: none; 
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-contenido {
+    background-color: var(--bg-card);
+    margin: 15% auto;
+    padding: 30px;
+    border: 4px dashed var(--border-dashed);
+    width: 80%;
+    max-width: 400px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: zoomModal 0.4s ease;
+}
+
+.cerrar-modal {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoomModal {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================
+   OPTIMIZACIÓN PARA MÓVILES (Responsive)
+   ========================================== */
+@media (max-width: 768px) {
+    .main-container { width: 95%; margin: 10px auto; padding: 15px; }
+    header { flex-direction: column; gap: 15px; }
+    nav ul { flex-wrap: wrap; justify-content: center; }
+    .marco-marron { flex-direction: column; text-align: center; }
+    .btn-interact, #btn-fact, button[type="submit"] { width: 100%; }
 }
