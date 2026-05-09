@@ -1,0 +1,83 @@
+/* ==========================================
+   OPTIMIZACIÓN PARA MÓVILES (Responsive)
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* Ajustes del contenedor principal */
+    .main-container {
+        margin: 10px;
+        padding: 15px;
+        width: auto;
+    }
+
+    /* Header: Pasamos de fila a columna para que quepan los enlaces */
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav li {
+        margin-left: 0;
+    }
+
+    /* La sección de Pelusa: De horizontal a vertical */
+    .marco-marron {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .marco-marron img {
+        width: 180px; /* Un poco más pequeño para móviles */
+    }
+
+    .caja-info {
+        width: 100%;
+    }
+
+    /* Ajuste de botones para que sean fáciles de tocar con el dedo */
+    .btn-interact, #btn-fact, button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    /* Galería: Forzamos 2 columnas en móviles medianos o 1 en muy pequeños */
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .foto-card img {
+        height: 150px;
+    }
+
+    /* Formulario: Aseguramos que use todo el ancho disponible */
+    #form-michi {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    /* Texto flotante: Ajuste de tamaño para no tapar toda la pantalla */
+    .miau-flotante {
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes extra para pantallas muy pequeñas (iPhone SE, etc.) */
+@media (max-width: 400px) {
+    h1 { font-size: 1.5rem; }
+    .logo span { font-size: 1.2rem; }
+    
+    .grid-galeria {
+        grid-template-columns: 1fr;
+    }
+}

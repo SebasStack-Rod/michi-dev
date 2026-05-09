@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MichiDev - Galería Profesional</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span>🐾 MichiDev</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#registro">Registrar Michi</a></li>
+                <li><button id="btn-dark-mode">🌙 Modo Michi-Dark</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        
+        <section id="inicio">
+            <h1>Panel de Control de Pelusa</h1>
+
+            <div class="seccion-gatito">
+                <div class="marco-marron">
+                    <div class="foto-principal">
+                        <img src="imagenes/gatito1.jpg" alt="Pelusa el MichiDev">
+                        <p class="etiqueta-cute">Mascota Senior del Proyecto</p>
+                    </div>
+
+                    <div class="caja-info">
+                        <h3>Datos del Michi</h3>
+                        <ul>
+                            <li><strong>Nombre:</strong> Pelusa</li>
+                            <li><strong>Edad:</strong> 2 meses</li>
+                        </ul>
+                        
+                        <div class="skills">
+                            <h4>Destruction Skills:</h4>
+                            <div class="skill-bar"><div class="fill" style="width: 95%;">Romper Código</div></div>
+                            <div class="skill-bar"><div class="fill" style="width: 80%;">Maullar a las 3 AM</div></div>
+                            <div class="skill-bar"><div class="fill" style="width: 60%;">Dormir en el Teclado</div></div>
+                        </div>
+
+                        <div class="interaccion">
+                            <button id="btn-mimo" class="btn-interact">💖 Dar Caricia</button>
+                            <span id="contador-mimos">0</span> mimos recibidos
+                        </div>
+
+                        <a href="https://www.google.com/maps" target="_blank" class="btn-maps">
+                            📍 Ubicación: El Rabón, Santa Fe
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curiosidades-box">
+                <h3>¿Sabías que...?</h3>
+                <p id="fact-text">Haz clic abajo para conocer un secreto gatuno.</p>
+                <button id="btn-fact">Generar Curiosidad 🐱</button>
+            </div>
+        </section>
+
+        <hr class="divisor-cute">
+
+        <section id="galeria">
+            <h2>Galería de Becarios (Michis)</h2>
+            <div class="grid-galeria" id="contenedor-galeria">
+                <div class="foto-card">
+                    <img src="imagenes/gatito2.jpg" alt="Gatito 2">
+                    <div class="card-info">
+                        <h4>Mishi Hacker</h4>
+                        <p>Rol: Borrar Bases de Datos</p>
+                    </div>
+                </div>
+                <div class="foto-card">
+                    <img src="imagenes/gatito3.jpg" alt="Gatito 3">
+                    <div class="card-info">
+                        <h4>Gato Ninja</h4>
+                        <p>Rol: Robar comida en silencio</p>
+                    </div>
+                </div>
+                <div class="foto-card">
+                    <img src="imagenes/gatito4.jpg" alt="Gatito 4">
+                    <div class="card-info">
+                        <h4>Michi Tester</h4>
+                        <p>Rol: Encontrar bugs mordiendo cables</p>
+                    </div>
+                </div>
+                <div class="foto-card">
+                    <img src="imagenes/gatito5.jpg" alt="Gatito 5">
+                    <div class="card-info">
+                        <h4>Michi DevOps</h4>
+                        <p>Rol: Tirar los servidores de producción</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="registro">
+            <h2>Registra a tu Michi Programador</h2>
+            <form id="form-michi">
+                <input type="text" id="nombre-michi" placeholder="Nombre del gato" required>
+                <input type="text" id="especialidad-michi" placeholder="Especialidad (ej: Debugging)" required>
+                <label for="foto-michi" class="label-file">Sube la foto de tu michi 📸</label>
+                <input type="file" id="foto-michi" accept="image/*" required>
+                <button type="submit">Enviar al Sistema 🚀</button>
+            </form>
+        </section>
+
+    </main> 
+
+    <footer>
+        <p>© 2026 MichiDev Corp. Hecho con ❤️ por Sebastián Emmanuel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
